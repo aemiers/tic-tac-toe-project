@@ -1,6 +1,10 @@
 class Game {
   constructor() {
-    this.win
+    // this.win
+    this.square = square;
+    this.squareFilled = squareFilled;
+
+    this.turn = 0;
   }
 }
 
@@ -37,17 +41,8 @@ for (i = 0; i < this.wins.length; i++) {
   restartGame()
 }
 
-function playerTurn() {
-  if (this.game === reset) {
-    this.turn !== winner
-  } else if (this.turn === player1) {
-    this.turn = player2;
-  } else {
-    this.turn = player1;
-  }
-}
 
 restartGame(player who wins) {
   clear gameBoard
-  
+
 }
