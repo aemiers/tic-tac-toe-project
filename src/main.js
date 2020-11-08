@@ -1,5 +1,3 @@
-// var Game = require("./game.js")
-
 var square0 = document.querySelector("#square-0");
 var square1 = document.querySelector("#square-1");
 var square2 = document.querySelector("#square-2");
@@ -41,51 +39,44 @@ function markSquare(event) {
   var squareNumber = selectedSquare[7];
   var squareIdNumber = parseInt(squareNumber);
   gameBoardValues[squareIdNumber] = "X"
-  console.log(gameBoardValues);
-  event.target.innerText = "X";
-
-  // idSquareClicked();
-  // updateGameBoardValuesArray();
-  // addImageToSquare();
+  event.target.innerHTML = `${player.icon}`
 }
 
 
-function alternateTurns() {
-  player1.turn = true;
-  if (player1.turn === true) {
-    player token will be X
-  }
-//   if (player2.turn === false) {
-//     player1.turn = true;
-//   } else {
-//     player2.turn = true;
-//   }
-//   //innerHTML display whose turn it is
+// function markSquare(event) {
+//     var selectedSquare = event.target.id;
+//     var squareNumber = selectedSquare[7];
+//     var squareIdNumber = parseInt(squareNumber);
+//   assignPlayerTokens();
+  // idSquareClicked();
+  // updateGameBoardValuesArray();
+  // addImageToSquare();
 // }
-//
 
-//   for (var i = 0; i < gameBoardValues.length; i++) {
-//     if (gameBoardValues[i] === "") {
-//       gameBoardValues[i].push(`${currentPlayer.letter}`)
-//     }
-//     pushPlayerIcon();
-//     disableClickedSquare();
-//     updateHeaderMessage();
-//     nextPlayerTurn();
+// function alternateTurns(event) {
+//   player1.turn = true;
+//   if (player1.turn === true) {
+//     markSquare;
+//     player1.turn = false;
+//   }
+//   if (player1.turn === false) {
+//     player2.turn = true;
+//     player1.turn = true;
+//   }
+//  }
+//
+//
+// function assignPlayerTokens(event) {
+//   player1.turn = true;
+//   if (player1.turn === true) {
+//     event.target.innerText = "X";
+//     gameBoardValues[squareIdNumber] = "X";
+//   } else if (player2.turn === true) {
+//     event.target.innerText = "O";
+//     gameBoardValues[squareIdNumber] = "O";
 //   }
 // }
-//
-// Game pseudocoding -
-// begins with player 1. is player 1 and player 2 defined? yes, on the player board
-//
-// player 1 chooses a square and clicks on it
-//
-// click triggers a function that labels where the user clicked on the gameBoard, marks it with the token, disables the box, checks to see if there's a winning scenario. if there's not, it's player 2's turn.
-//
-// if there's a winning scenario, triggers congratulations celebration banner and the tally on the player's side will go up by one. game will restart, wiping the grid clean. One click will happen to reset the board.
-//
-//
-//
+
 // done -click is noticed the board, the mark  square function is invoked
 // we will know which player it is because of the gamestart function
 //
