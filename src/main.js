@@ -1,18 +1,19 @@
-var square0 = document.querySelector("#square-0");
-var square1 = document.querySelector("#square-1");
-var square2 = document.querySelector("#square-2");
-var square3 = document.querySelector("#square-3");
-var square4 = document.querySelector("#square-4");
-var square5 = document.querySelector("#square-5");
-var square6 = document.querySelector("#square-6");
-var square7 = document.querySelector("#square-7");
-var square8 = document.querySelector("#square-8");
+// var square0 = document.querySelector("#square-0");
+// var square1 = document.querySelector("#square-1");
+// var square2 = document.querySelector("#square-2");
+// var square3 = document.querySelector("#square-3");
+// var square4 = document.querySelector("#square-4");
+// var square5 = document.querySelector("#square-5");
+// var square6 = document.querySelector("#square-6");
+// var square7 = document.querySelector("#square-7");
+// var square8 = document.querySelector("#square-8");
 var gameBoard = document.querySelectorAll(".square");
 // var gameBoard = document.querySelector("#board");
 var rightScore = document.querySelector("#right-side-score");
 var leftScore = document.querySelector("#left-side-score");
 var mainTitle = document.querySelector("#main-title");
-var allSquares = document.querySelectorAll()
+
+var gameboard = document.querySelectorAll()
 
 window.addEventListener("load", beginningTurn);
 gameBoard.addEventListener("click", identifySquare);
@@ -28,7 +29,7 @@ square8.addEventListener("click", markSquare);
 
 var game = new Game;
 var currentPlayer = player1;
-var currentSquare = square that was clicked on
+var currentSquare = parseInt(clickedSquare.getAttribute('data-cell-index'))
 var gameBoardValues = ["", "", "", "", "", "", "", "", ""];
 gameBoardValues[0] = square0;
 
