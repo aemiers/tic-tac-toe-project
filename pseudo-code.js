@@ -1,3 +1,10 @@
+game begins
+  game board is clean
+  game array is cleared
+  it's player 1's durn
+  player 1 turn displayed on HTML
+  game board listening for click
+
 user clicks on a square
 square is identified with id
 capture event.target with event listener and query selectors
@@ -17,9 +24,12 @@ mark off corrosponding square with player token
 
 identify whose turn it is
   it starts off as player1
-  after player1 clicks, it's player 2's turn
-  after player2 clicks, it's player 1's turn
-  repeat until all of the squares are full
+  click = player 1 = true, place that token
+  make state false so that it goes to the next person
+  player 2 turn
+  player 2 click
+  make false
+  player 1 turn
 
 To assign an image to a player
   player 1 token = image url
@@ -37,7 +47,7 @@ square deactivated
   After a player clicked a square, it becomes deactivated
     event listener deactivated?
       this could be a shortcut if it's possible?
-    disable UI? - I have created a square.
+    disable UI? - I have created a square.disabled class
     make sure that the new info isn't getting pushed into the Array
       adding if (gameBoardArray === ""), then proceed
 save information

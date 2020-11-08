@@ -1,21 +1,17 @@
 class Game {
   constructor() {
-    // this.win
-    this.square = square;
-    this.squareFilled = squareFilled;
-
-    this.turn = 0;
+    this.currentPlayer = player1;
   }
 }
 
-square
+var game = new Game;
 var currentGame = [];
 
-var gameBoard = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8]
-];
+// var gameBoard = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8]
+// ];
 
 var wins = [
   [0, 1, 2],
@@ -29,6 +25,7 @@ var wins = [
 ]
 
 // Who won the game?
+//no need to use interpolation here, keep this function here
 function winOrDraw
 for (i = 0; i < this.wins.length; i++) {
   if (currentGame === wins[i].length) {
@@ -46,3 +43,4 @@ restartGame(player who wins) {
   clear gameBoard
 
 }
+module.exports = Game;
