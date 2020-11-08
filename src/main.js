@@ -19,29 +19,31 @@ square6.addEventListener("click", markSquare);
 square7.addEventListener("click", markSquare);
 square8.addEventListener("click", markSquare);
 
-// var gameBoard = document.querySelector("#board");
-// var gameBoardSquares = document.querySelectorAll(".square");
 var rightScore = document.querySelector("#right-side-score");
 var leftScore = document.querySelector("#left-side-score");
 var mainTitle = document.querySelector("#main-title");
+var turkeyImage = `<img src="images/turkey.svg" alt="turkey image"/>`;
+var hatImage = `<img src="images/pilgrim.svg" alt="Hat image"/>`;
 
-// var square = document.getElementById()
-// window.addEventListener("load", beginningTurn);
-
-// gameBoard.addEventListener("click", markSquare);
-
-// var currentPlayer = player1;
-// player1.turn = true;
+var currentPlayer = player1;
+player1.turn = true;
 var gameBoardValues = ["", "", "", "", "", "", "", "", ""];
 
-function markSquare(event) {
+function markSquare(event, letter, icon) {
   var selectedSquare = event.target.id;
   var squareNumber = selectedSquare[7];
   var squareIdNumber = parseInt(squareNumber);
-  gameBoardValues[squareIdNumber] = "X"
-  event.target.innerHTML = `${player.icon}`
+  gameBoardValues[squareIdNumber] = `${letter}`
+  event.target.innerHTML = `${icon}`
 }
 
+function alternateTurns(currentPlayer) {
+  if (currentPlayer === player1) {
+    currentPlayer = player2;
+  } else {
+    currentPlayer = player1;
+  }
+}
 
 // function markSquare(event) {
 //     var selectedSquare = event.target.id;
@@ -53,17 +55,7 @@ function markSquare(event) {
   // addImageToSquare();
 // }
 
-// function alternateTurns(event) {
-//   player1.turn = true;
-//   if (player1.turn === true) {
-//     markSquare;
-//     player1.turn = false;
-//   }
-//   if (player1.turn === false) {
-//     player2.turn = true;
-//     player1.turn = true;
-//   }
-//  }
+
 //
 //
 // function assignPlayerTokens(event) {
