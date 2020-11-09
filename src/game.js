@@ -4,6 +4,7 @@ class Game {
     this.player2 = player2;
     this.currentPlayer = player1;
     this.gameBoardValues = ["", "", "", "", "", "", "", "", ""];
+    this.winner = false;
     this.wins = [
       [0, 1, 2],
       [3, 4, 5],
@@ -22,8 +23,21 @@ class Game {
       this.currentPlayer = this.player1;
     }
   }
-}
 
+  //does the player have any of the combinations of wins 
+  // gameWin() {
+  //   for (i = 0; i < player.selectionsTracker.length, i++) {
+  //     if (currentPlayer.selectionsTracker.length >= 3 && currentPlayer.selectionsTracker[i] === game.wins[i]) {
+  //       this.winner = true;
+  //       currentPlayer.wins ++;
+  //       updateScore();
+  //       displayHeaderMessage();
+  //     } else {
+  //       this.winner = false;
+  //     }
+  //   }
+  // }
+}
 var currentGame = [];
 
 //methods modify the classes b/c they are right on the class

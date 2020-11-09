@@ -11,6 +11,7 @@ var square6 = document.querySelector("#square-6");
 var square7 = document.querySelector("#square-7");
 var square8 = document.querySelector("#square-8");
 var gameBoard = document.querySelector("#board");
+var subHeaderMessage = document.querySelector("#display-messages");
 
 square0.addEventListener("click", markSquare);
 square1.addEventListener("click", markSquare);
@@ -21,6 +22,7 @@ square5.addEventListener("click", markSquare);
 square6.addEventListener("click", markSquare);
 square7.addEventListener("click", markSquare);
 square8.addEventListener("click", markSquare);
+window.addEventListener("load", gameStart);
 
 var rightScore = document.querySelector("#right-side-score");
 var leftScore = document.querySelector("#left-side-score");
@@ -28,35 +30,48 @@ var mainTitle = document.querySelector("#main-title");
 var turkeyImage = `<img src="images/turkey.svg" alt="turkey image"/>`;
 var hatImage = `<img src="images/pilgrim.svg" alt="Hat image"/>`;
 
-var player1 = new Player(hatImage, "X");
-var player2 = new Player(turkeyImage, "O");
+var player1 = new Player(hatImage, "X", "Pilgrim Team");
+var player2 = new Player(turkeyImage, "O", "Turkey Team");
 var game = new Game(player1, player2);
 
-var player2 = new Player;
-function markSquare(event, letter, icon) {
+function gameStart() {
+  displayHeaderMessage();
+}
+
+function markSquare(event) {
+  var updateGameBoardValuesArrayBoolean = updateGameBoardValuesArray();
+  displayPlayerIconInGame();
+  if (updateGameBoardValuesArrayBoolean === true) {
+    game.alternateTurns()
+    displayHeaderMessage();
+  }
+  console.log(game.gameBoardValues);
+}
+
+//split into two functions - check if should change, then run function
+
+function updateGameBoardValuesArray() {
   var selectedSquare = event.target.id;
   var squareNumber = selectedSquare[7];
   var squareIdNumber = parseInt(squareNumber);
+  if (game.gameBoardValues[squareIdNumber] === "") {
   game.gameBoardValues[squareIdNumber] = game.currentPlayer.letter;
-  event.target.innerHTML = game.currentPlayer.icon;
-  game.alternateTurns();
+  return true;
+  }
+  return false;
 }
 
+function displayPlayerIconInGame() {
+  event.target.innerHTML = game.currentPlayer.icon;
+}
 
-
-
-// function disableClickedSquare(gameBoardValues) {
-//   if (gameBoardValues[i] !== "") {
-//     square.disabled = true;
-//   }
-// }
-//
-// function pushPlayerIcon() {
-//   if (currentPlayer = player1) {
-//     currentSquare
-//   }
-// }
-
+function displayHeaderMessage() {
+  var playerTurnMessage = `It's ${game.currentPlayer.teamName}'s turn!`
+  var winnerMessage = `Congratulations ${game.currentPlayer.teamName}! You've won!`
+  var drawMessage = `It's a draw!`
+  //need if statement for when you have a win status or draw
+  subHeaderMessage.innerText = playerTurnMessage;
+}
 
 // gameState = win, in progress, draw
 // after win, need a blank click to reset gameBoard array
