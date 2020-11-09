@@ -25,16 +25,18 @@ var mainTitle = document.querySelector("#main-title");
 var turkeyImage = `<img src="images/turkey.svg" alt="turkey image"/>`;
 var hatImage = `<img src="images/pilgrim.svg" alt="Hat image"/>`;
 
-var currentPlayer = player1;
-player1.turn = true;
-var gameBoardValues = ["", "", "", "", "", "", "", "", ""];
+var player1 = new Player(hatImage, "X");
+var player2 = new Player(turkeyImage, "O");
+var game = new Game(player1, player2);
 
+var player2 = new Player;
 function markSquare(event, letter, icon) {
   var selectedSquare = event.target.id;
   var squareNumber = selectedSquare[7];
   var squareIdNumber = parseInt(squareNumber);
-  gameBoardValues[squareIdNumber] = `${letter}`
-  event.target.innerHTML = `${icon}`
+  gameBoardValues[squareIdNumber] = "X"
+  event.target.innerHTML = turkeyImage;
+  // alternateTurns();
 }
 
 function alternateTurns(currentPlayer) {
@@ -45,37 +47,7 @@ function alternateTurns(currentPlayer) {
   }
 }
 
-// function markSquare(event) {
-//     var selectedSquare = event.target.id;
-//     var squareNumber = selectedSquare[7];
-//     var squareIdNumber = parseInt(squareNumber);
-//   assignPlayerTokens();
-  // idSquareClicked();
-  // updateGameBoardValuesArray();
-  // addImageToSquare();
-// }
 
-
-//
-//
-// function assignPlayerTokens(event) {
-//   player1.turn = true;
-//   if (player1.turn === true) {
-//     event.target.innerText = "X";
-//     gameBoardValues[squareIdNumber] = "X";
-//   } else if (player2.turn === true) {
-//     event.target.innerText = "O";
-//     gameBoardValues[squareIdNumber] = "O";
-//   }
-// }
-
-// done -click is noticed the board, the mark  square function is invoked
-// we will know which player it is because of the gamestart function
-//
-//
-//
-//
-//
 // function disableClickedSquare(gameBoardValues) {
 //   if (gameBoardValues[i] !== "") {
 //     square.disabled = true;
@@ -87,21 +59,8 @@ function alternateTurns(currentPlayer) {
 //     currentSquare
 //   }
 // }
-// function playerTurn() {
-//   if (this.game === reset) {
-//     // this.turn !== winner || player2;
-//     // currentPlayer = winner || player1;
-//   } else if (player1.turn === true) {
-//     this.turn = player2;
-//     currentPlayer = player2;
-//   } else {
-//     this.turn = player1;
-//     currentPlayer = player1;
-//   }
-// }
-//
-//
-//
+
+
 // gameState = win, in progress, draw
 // after win, need a blank click to reset gameBoard array
 //
@@ -114,17 +73,14 @@ function alternateTurns(currentPlayer) {
 //     mainTitle.innerText = `It's a draw!`;
 //   }
 // }
-// function nextPlayerTurn() {
-//
-// }
-//
+
 // function updateScore() {
 //   leftScore.innerText = `${player1.wins}`;
 //   rightScore.innerText = `${player2.wins}`;
 // }
 //
 // function resetBoard() {
-//   gameBoard.value = "";
+//   gameBoardValues = ["", "", "", "", "", "", "", "", ""];
 // }
 
 //
