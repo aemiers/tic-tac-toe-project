@@ -1,3 +1,6 @@
+// var Game = require('./game.js');
+// var Player = require('./player.js');
+
 var square0 = document.querySelector("#square-0");
 var square1 = document.querySelector("#square-1");
 var square2 = document.querySelector("#square-2");
@@ -34,18 +37,12 @@ function markSquare(event, letter, icon) {
   var selectedSquare = event.target.id;
   var squareNumber = selectedSquare[7];
   var squareIdNumber = parseInt(squareNumber);
-  gameBoardValues[squareIdNumber] = "X"
-  event.target.innerHTML = turkeyImage;
-  // alternateTurns();
+  game.gameBoardValues[squareIdNumber] = game.currentPlayer.letter;
+  event.target.innerHTML = game.currentPlayer.icon;
+  game.alternateTurns();
 }
 
-function alternateTurns(currentPlayer) {
-  if (currentPlayer === player1) {
-    currentPlayer = player2;
-  } else {
-    currentPlayer = player1;
-  }
-}
+
 
 
 // function disableClickedSquare(gameBoardValues) {

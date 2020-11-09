@@ -15,6 +15,13 @@ class Game {
       [2, 4, 6],
     ]
   }
+  alternateTurns() {
+    if (this.currentPlayer === this.player1) {
+      this.currentPlayer = this.player2;
+    } else {
+      this.currentPlayer = this.player1;
+    }
+  }
 }
 
 var currentGame = [];
@@ -49,4 +56,4 @@ var currentGame = [];
 //   clear gameBoard
 //
 // }
-module.exports = Game;
+// module.exports = Game;
