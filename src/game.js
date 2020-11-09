@@ -15,8 +15,9 @@ class Game {
       "2, 5, 8",
       "0, 3, 6",
       "2, 4, 6",
-    ]
+    ];
   }
+
   alternateTurns() {
     if (this.currentPlayer === this.player1) {
       this.currentPlayer = this.player2;
@@ -27,17 +28,27 @@ class Game {
 
   winOrDrawGame() {
     for (i = 0; i < this.wins.length; i++) {
-      if (currentPlayer.stringMovesTracker.includes(wins[i]) {
+      // if (currentPlayer.stringMovesTracker.includes(wins[i]) {
+      if (this.wins[i].includes(currentPlayer.stringMovesTracker)) {
         curentPlayer.wins ++;
         this.winner = true;
       } else if (this.gameBoardValues !== "" && this.winner === false) {
         this.draw = true;
+      } else {
+        return;
+        //or break
       }
     }
   }
 
   // restartGame() {
   //  this.gameBoardValues = ["", "", "", "", "", "", "", "", ""];
+  //  this.currentPlayer = player1;
+  //  player1.movesTracker = [];
+  //  player2.movesTracker = [];
+  //  player1.stringMovesTracker = "";
+  //  player2.stringMovesTracker = "";
+  //  do i include innerHTML " " to reset the visual game board?
   // }
 }
 
