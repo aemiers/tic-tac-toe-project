@@ -1,7 +1,9 @@
 game begins
   game board is clean
   game array is cleared
-  it's player 1's durn
+  it's player 1's turn
+  icon = hat
+  letter = x
   player 1 turn displayed on HTML
   game board listening for click
 
@@ -43,14 +45,54 @@ assign token to player
     O populates the game array
     turkey populates the board
 
-square deactivated
+
+square deactivated - did not go game.gameBoardValues[squareIdNumber] === "" route because then it's the next player's turn, creating a bug. Will deactivate event listener
   After a player clicked a square, it becomes deactivated
     event listener deactivated?
       this could be a shortcut if it's possible?
-    disable UI? - I have created a square.disabled class
+    square.disabled class
     make sure that the new info isn't getting pushed into the Array
-      adding if (gameBoardArray === ""), then proceed
+    turn doesn't go unless an empty square was clicked on
 save information
 
+change the titles of the top
+  create different var for each message - should go on main js file
+    player 1 turn
+    player 2 turn
+    player 1 won
+    player 2 won
+    it's a draw
+  insert at top of page
 
-//what do i need for a game to begin  - fresh map, fresh array, player1 go, innerText of title tells player1 to go, newGame
+  questions for Annie -
+    trying to make it not possible for the user to click on the same square
+      Is it possible to add disabled class to div? (CSS at 93)
+      Removing event listeners from squares, how would I get them back?
+
+winning a game
+  keep track of each players turns in their array
+  push squareIdNumber into game.currentPlayer.selectionsTracker;
+      goes into line 54
+      game.currentPlayer.selectionsTracker.push(squareIdNumber)
+  check if the player's selections match up with any of the win scenarios
+    for (i = 0; i < player.selectionsTracker.length, i++) {
+      if (selectionsTracker.length >= 3 &&
+    }
+  last click player is the winner
+  add 1 to that player's wins
+  display winning message
+  update Score
+  if winner = true game stops
+
+  update score
+    current player won 
+restarting game
+  one click after win to reset board
+
+
+
+
+
+
+
+,
