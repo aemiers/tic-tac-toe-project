@@ -56,54 +56,43 @@ function updateGameBoardValuesArray() {
   var squareIdNumber = parseInt(squareNumber);
   if (game.gameBoardValues[squareIdNumber] === "") {
   game.gameBoardValues[squareIdNumber] = game.currentPlayer.letter;
+  game.currentPlayer.movesTracker.push(squareIdNumber);
+  console.log(game.currentPlayer.movesTracker);
   return true;
   }
   return false;
 }
+
 
 function displayPlayerIconInGame() {
   event.target.innerHTML = game.currentPlayer.icon;
 }
 
 function displayHeaderMessage() {
-  var playerTurnMessage = `It's ${game.currentPlayer.teamName}'s turn!`
-  var winnerMessage = `Congratulations ${game.currentPlayer.teamName}! You've won!`
-  var drawMessage = `It's a draw!`
-  //need if statement for when you have a win status or draw
-  subHeaderMessage.innerText = playerTurnMessage;
+  var playerTurnMessage = `It's ${game.currentPlayer.teamName}'s turn!`;
+  var winnerMessage = `Congratulations ${game.currentPlayer.teamName}! You've won!`;
+  var drawMessage = `It's a draw!`;
+  if (game.winner === false && game.gameBoardValues.includes("")) {
+      subHeaderMessage.innerText = playerTurnMessage;
+    } else if (game.winner === true) {
+    subHeaderMessage.innerText = winnerMessage;
+    updateScoreBoard();
+  } else if (game.draw === true) {
+   subHeaderMessage.innerText = drawMessage;
+  }
 }
+
+function updateScoreBoard() {
+  leftScore.innerText = player1.wins;
+  rightScore.innerText = player2.wins;
+}
+//
 
 // gameState = win, in progress, draw
 // after win, need a blank click to reset gameBoard array
 //
-//
-// updateHeaderMessage() {
-//   mainTitle.innerText = `It's ${currentPlayer}'s turn!`;
-//   if (gamestate === won) {
-//     mainTitle.innerText = `Congratulations ${currentPlayer}! You've won!`;
-//   } else if (gamestate === draw) {
-//     mainTitle.innerText = `It's a draw!`;
-//   }
-// }
 
-// function updateScore() {
-//   leftScore.innerText = `${player1.wins}`;
-//   rightScore.innerText = `${player2.wins}`;
-// }
-//
+
 // function resetBoard() {
 //   gameBoardValues = ["", "", "", "", "", "", "", "", ""];
 // }
-
-//
-// // gamestate v win state
-// // startGame()
-// //   new game
-// //
-// // function addToGameArray() {
-// //
-// // }
-// //
-// // function checkGridGame() {
-// //
-// // }
