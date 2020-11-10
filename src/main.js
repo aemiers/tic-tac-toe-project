@@ -10,6 +10,7 @@ var square5 = document.querySelector("#square-5");
 var square6 = document.querySelector("#square-6");
 var square7 = document.querySelector("#square-7");
 var square8 = document.querySelector("#square-8");
+var squares = document.querySelectorAll(".square");
 var gameBoard = document.querySelector("#board");
 var subHeaderMessage = document.querySelector("#display-messages");
 
@@ -36,14 +37,16 @@ var game = new Game(player1, player2);
 
 function gameStart() {
   displayHeaderMessage();
+  updateScoreBoard();
 }
 
 function markSquare(event) {
   var updateGameBoardValuesArrayBoolean = updateGameBoardValuesArray();
   displayPlayerIconInGame();
   if (updateGameBoardValuesArrayBoolean === true) {
-    game.alternateTurns()
+    game.winOrDrawGame();
     displayHeaderMessage();
+    game.alternateTurns();
   }
   console.log(game.gameBoardValues);
 }
@@ -56,6 +59,8 @@ function updateGameBoardValuesArray() {
   var squareIdNumber = parseInt(squareNumber);
   if (game.gameBoardValues[squareIdNumber] === "") {
   game.gameBoardValues[squareIdNumber] = game.currentPlayer.letter;
+  game.currentPlayer.movesTracker.push(squareIdNumber);
+  console.log(game.currentPlayer.movesTracker);
   return true;
   }
   return false;
@@ -66,44 +71,20 @@ function displayPlayerIconInGame() {
 }
 
 function displayHeaderMessage() {
-  var playerTurnMessage = `It's ${game.currentPlayer.teamName}'s turn!`
-  var winnerMessage = `Congratulations ${game.currentPlayer.teamName}! You've won!`
-  var drawMessage = `It's a draw!`
-  //need if statement for when you have a win status or draw
-  subHeaderMessage.innerText = playerTurnMessage;
+  var playerTurnMessage = `It's ${game.currentPlayer.teamName}'s turn!`;
+  var winnerMessage = `Congratulations ${game.currentPlayer.teamName}! You've won!`;
+  var drawMessage = `It's a draw!`;
+  if (game.winner === false && game.gameBoardValues.includes("")) {
+      subHeaderMessage.innerText = playerTurnMessage;
+    } else if (game.winner === true) {
+    updateScoreBoard();
+    subHeaderMessage.innerText = winnerMessage;
+  } else if (game.draw === true) {
+   subHeaderMessage.innerText = drawMessage;
+  }
 }
 
-// gameState = win, in progress, draw
-// after win, need a blank click to reset gameBoard array
-//
-//
-// updateHeaderMessage() {
-//   mainTitle.innerText = `It's ${currentPlayer}'s turn!`;
-//   if (gamestate === won) {
-//     mainTitle.innerText = `Congratulations ${currentPlayer}! You've won!`;
-//   } else if (gamestate === draw) {
-//     mainTitle.innerText = `It's a draw!`;
-//   }
-// }
-
-// function updateScore() {
-//   leftScore.innerText = `${player1.wins}`;
-//   rightScore.innerText = `${player2.wins}`;
-// }
-//
-// function resetBoard() {
-//   gameBoardValues = ["", "", "", "", "", "", "", "", ""];
-// }
-
-//
-// // gamestate v win state
-// // startGame()
-// //   new game
-// //
-// // function addToGameArray() {
-// //
-// // }
-// //
-// // function checkGridGame() {
-// //
-// // }
+function updateScoreBoard() {
+  leftScore.innerText = `${player1.wins}`;
+  rightScore.innerText = `${player2.wins}`;
+}

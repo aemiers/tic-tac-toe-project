@@ -4,15 +4,18 @@ class Player {
     this.icon = icon;
     this.letter = letter;
     this.teamName = teamName;
-    this.selectionsTracker = [];
-    //sort them in order 
+    this.movesTracker = [];
+    this.stringMovesTracker = "";
   }
+
   saveWinsToStorage () {
   }
 
   retrieveWinsFromStorage() {
   }
 
+  manipulateMovesTracker() {
+    var organizedMoves = this.movesTracker.sort();
+    this.stringMovesTracker = organizedMoves.toString()
+  }
 }
-
-// module.exports = Player;
