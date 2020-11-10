@@ -1,6 +1,3 @@
-// var Game = require('./game.js');
-// var Player = require('./player.js');
-
 var square0 = document.querySelector("#square-0");
 var square1 = document.querySelector("#square-1");
 var square2 = document.querySelector("#square-2");
@@ -13,6 +10,9 @@ var square8 = document.querySelector("#square-8");
 var squares = document.querySelectorAll(".square");
 var gameBoard = document.querySelector("#board");
 var subHeaderMessage = document.querySelector("#display-messages");
+var rightScore = document.querySelector("#right-side-score");
+var leftScore = document.querySelector("#left-side-score");
+var mainTitle = document.querySelector("#main-title");
 
 square0.addEventListener("click", markSquare);
 square1.addEventListener("click", markSquare);
@@ -25,12 +25,9 @@ square7.addEventListener("click", markSquare);
 square8.addEventListener("click", markSquare);
 window.addEventListener("load", gameStart);
 
-var rightScore = document.querySelector("#right-side-score");
-var leftScore = document.querySelector("#left-side-score");
-var mainTitle = document.querySelector("#main-title");
+
 var turkeyImage = `<img src="images/turkey.svg" alt="turkey image"/>`;
 var hatImage = `<img src="images/pilgrim.svg" alt="Hat image"/>`;
-
 var player1 = new Player(hatImage, "X", "Pilgrim Team");
 var player2 = new Player(turkeyImage, "O", "Turkey Team");
 var game = new Game(player1, player2);
@@ -48,10 +45,7 @@ function markSquare(event) {
     displayHeaderMessage();
     game.alternateTurns();
   }
-  console.log(game.gameBoardValues);
 }
-
-//split into two functions - check if should change, then run function
 
 function updateGameBoardValuesArray() {
   var selectedSquare = event.target.id;
@@ -60,7 +54,6 @@ function updateGameBoardValuesArray() {
   if (game.gameBoardValues[squareIdNumber] === "") {
   game.gameBoardValues[squareIdNumber] = game.currentPlayer.letter;
   game.currentPlayer.movesTracker.push(squareIdNumber);
-  console.log(game.currentPlayer.movesTracker);
   return true;
   }
   return false;

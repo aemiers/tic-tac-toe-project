@@ -64,13 +64,11 @@ change the titles of the top
     it's a draw
   insert at top of page
 
-  questions for Annie -
-    trying to make it not possible for the user to click on the same square
-      Is it possible to add disabled class to div? (CSS at 93)
-      Removing event listeners from squares, how would I get them back?
-
 winning a game
-  keep track of each players turns in their array
+  keep track of each players turns in their array -should this be an ARRAY or a string??
+    organize the selections from smallest integer to largest
+    make array a string 
+
   push squareIdNumber into game.currentPlayer.selectionsTracker;
       goes into line 54
       game.currentPlayer.selectionsTracker.push(squareIdNumber)
@@ -85,7 +83,7 @@ winning a game
   if winner = true game stops
 
   update score
-    current player won 
+    current player won
 restarting game
   one click after win to reset board
 
