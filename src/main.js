@@ -10,6 +10,7 @@ var square5 = document.querySelector("#square-5");
 var square6 = document.querySelector("#square-6");
 var square7 = document.querySelector("#square-7");
 var square8 = document.querySelector("#square-8");
+var squares = document.querySelectorAll(".square");
 var gameBoard = document.querySelector("#board");
 var subHeaderMessage = document.querySelector("#display-messages");
 
@@ -36,14 +37,16 @@ var game = new Game(player1, player2);
 
 function gameStart() {
   displayHeaderMessage();
+  updateScoreBoard();
 }
 
 function markSquare(event) {
   var updateGameBoardValuesArrayBoolean = updateGameBoardValuesArray();
   displayPlayerIconInGame();
   if (updateGameBoardValuesArrayBoolean === true) {
-    game.alternateTurns()
+    game.winOrDrawGame();
     displayHeaderMessage();
+    game.alternateTurns();
   }
   console.log(game.gameBoardValues);
 }
@@ -63,7 +66,6 @@ function updateGameBoardValuesArray() {
   return false;
 }
 
-
 function displayPlayerIconInGame() {
   event.target.innerHTML = game.currentPlayer.icon;
 }
@@ -75,24 +77,14 @@ function displayHeaderMessage() {
   if (game.winner === false && game.gameBoardValues.includes("")) {
       subHeaderMessage.innerText = playerTurnMessage;
     } else if (game.winner === true) {
-    subHeaderMessage.innerText = winnerMessage;
     updateScoreBoard();
+    subHeaderMessage.innerText = winnerMessage;
   } else if (game.draw === true) {
    subHeaderMessage.innerText = drawMessage;
   }
 }
 
 function updateScoreBoard() {
-  leftScore.innerText = player1.wins;
-  rightScore.innerText = player2.wins;
+  leftScore.innerText = `${player1.wins}`;
+  rightScore.innerText = `${player2.wins}`;
 }
-//
-
-// gameState = win, in progress, draw
-// after win, need a blank click to reset gameBoard array
-//
-
-
-// function resetBoard() {
-//   gameBoardValues = ["", "", "", "", "", "", "", "", ""];
-// }

@@ -6,34 +6,39 @@ class Game {
     this.gameBoardValues = ["", "", "", "", "", "", "", "", ""];
     this.winner = false;
     this.draw = false;
-    this.wins = [
-      "0, 1, 2",
-      "3, 4, 5",
-      "6, 7, 8",
-      "0, 3, 6",
-      "1, 4, 7",
-      "2, 5, 8",
-      "0, 3, 6",
-      "2, 4, 6",
-    ];
   }
 
   alternateTurns() {
     if (this.currentPlayer === this.player1) {
       this.currentPlayer = this.player2;
-    } else {
+    } else if (this.currentPlayer === this.player2) {
       this.currentPlayer = this.player1;
     }
   }
 
   winOrDrawGame() {
-    for (i = 0; i < this.wins.length; i++) {
-      // if (currentPlayer.stringMovesTracker.includes(wins[i]) {
-      if (this.wins[i].includes(currentPlayer.stringMovesTracker)) {
-        curentPlayer.wins ++;
+    var winsArray = [
+      "0,1,2",
+      "3,4,5",
+      "6,7,8",
+      "0,3,6",
+      "1,4,7",
+      "2,5,8",
+      "0,4,8",
+      "2,4,6",
+    ];
+    this.currentPlayer.manipulateMovesTracker();
+    for (var i = 0; i < winsArray.length; i++) {
+      if (this.currentPlayer.stringMovesTracker.includes(winsArray[i])) {
+        console.log(this.currentPlayer);
+        this.currentPlayer.wins++;
         this.winner = true;
+        displayHeaderMessage();
+        // this.restartGame();
       } else if (this.gameBoardValues !== "" && this.winner === false) {
         this.draw = true;
+        displayHeaderMessage();
+        // this.restartGame();
       } else {
         return;
         //or break
@@ -48,14 +53,8 @@ class Game {
   //  player2.movesTracker = [];
   //  player1.stringMovesTracker = "";
   //  player2.stringMovesTracker = "";
-  //  do i include innerHTML " " to reset the visual game board?
+  //  // squares.forEach(node => node.innerHTML = "");
   // }
 }
 
 var currentGame = [];
-
-// restartGame(player who wins) {
-//   clear gameBoard
-//restartGame()
-// }
-// module.exports = Game;
