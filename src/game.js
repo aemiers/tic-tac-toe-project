@@ -53,7 +53,6 @@ class Game {
   //  player2.movesTracker = [];
   //  player1.stringMovesTracker = "";
   //  player2.stringMovesTracker = "";
-  //  // squares.forEach(node => node.innerHTML = "");
   // }
 }
 
